@@ -1,17 +1,34 @@
-# smart_utilities
+# Smart Utilities - Stage 1
 
-A new Flutter project.
+A clean, modern Flutter utility toolkit app built for HNG Internship Mobile Track.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+### Stage 0 (Completed)
+- **Unit Converter** – Length, Weight, Temperature, Volume (real-time conversion)
+- **Currency Converter** – Live exchange rates (exchangerate.host API)
+- **Notes** – Add, view, delete with local persistence
+- **BMI Calculator** – Real-time BMI with health status
 
-A few resources to get you started if this is your first Flutter project:
+### Stage 1 (New)
+- **Tasks & Checklist Manager**
+  - Create tasks
+  - Mark as completed (checkbox + strike-through)
+  - Edit tasks
+  - Delete tasks
+  - Fully persistent using Hive (offline-first)
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Tech Stack
+- Flutter + Material 3
+- Riverpod (state management)
+- GoRouter (navigation)
+- Hive + Hive Flutter (local storage)
+- HTTP (currency API)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+(You can add screenshots here later)
+
+## How to Run
+```bash
+flutter pub get
+flutter run
