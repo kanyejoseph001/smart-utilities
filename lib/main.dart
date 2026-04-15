@@ -8,6 +8,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'models/note.dart';
 import 'features/notes/notes_screen.dart';
 import 'features/bmi/bmi_calculator_screen.dart';
+import 'models/task.dart';
+import 'features/tasks/tasks_screen.dart';
 
 import 'core/theme.dart';
 import 'features/home/home_screen.dart';
@@ -16,7 +18,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(NoteAdapter());          
-  await Hive.openBox<Note>('notes');             
+  await Hive.openBox<Note>('notes');   
+  Hive.registerAdapter(TaskAdapter());
+  await Hive.openBox<Task>('tasks');          
 
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -45,5 +49,6 @@ final _router = GoRouter(
     GoRoute(path: '/currency', builder: (context, state) => const CurrencyConverterScreen()),
     GoRoute(path: '/notes', builder: (context, state) => const NotesScreen()),
     GoRoute(path: '/bmi', builder: (context, state) => const BmiCalculatorScreen()),
+    GoRoute(path: '/tasks', builder: (context, state) => const TasksScreen()),
   ],
 );

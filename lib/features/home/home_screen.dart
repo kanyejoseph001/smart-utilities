@@ -16,16 +16,16 @@ class _HomeScreenState extends State<HomeScreen> {
     'Unit Converter',
     'Currency',
     'Notes',
-    'BMI',
+    'Tasks',
   ];
 
   final List<Widget> _screens = [
-    const HomeDashboard(),           // We'll define this below
-    const Placeholder(child: Center(child: Text('Unit Converter Coming Soon'))),
-    const Placeholder(child: Center(child: Text('Currency Converter Coming Soon'))),
-    const Placeholder(child: Center(child: Text('Notes Coming Soon'))),
-    const Placeholder(child: Center(child: Text('BMI Calculator Coming Soon'))),
-  ];
+  const HomeDashboard(),
+  const Placeholder(child: Center(child: Text('Unit Converter'))),
+  const Placeholder(child: Center(child: Text('Currency'))),
+  const Placeholder(child: Center(child: Text('Notes'))),
+  const Placeholder(child: Center(child: Text('Tasks'))),
+];
 
   @override
   Widget build(BuildContext context) {
@@ -54,32 +54,32 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() => _currentIndex = index);
         },
         destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home_outlined),
-            selectedIcon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.swap_horiz_outlined),
-            selectedIcon: Icon(Icons.swap_horiz),
-            label: 'Converter',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.currency_exchange_outlined),
-            selectedIcon: Icon(Icons.currency_exchange),
-            label: 'Currency',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.note_outlined),
-            selectedIcon: Icon(Icons.note),
-            label: 'Notes',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.monitor_weight_outlined),
-            selectedIcon: Icon(Icons.monitor_weight),
-            label: 'BMI',
-          ),
-        ],
+  NavigationDestination(
+    icon: Icon(Icons.home_outlined),
+    selectedIcon: Icon(Icons.home), 
+    label: 'Home',
+  ),
+  NavigationDestination(
+    icon: Icon(Icons.swap_horiz_outlined),
+    selectedIcon: Icon(Icons.swap_horiz), 
+    label: 'Converter'
+  ),
+  NavigationDestination(
+    icon: Icon(Icons.currency_exchange_outlined),
+    selectedIcon: Icon(Icons.currency_exchange), 
+    label: 'Currency'
+  ),
+  NavigationDestination(
+    icon: Icon(Icons.note_outlined), 
+    selectedIcon: Icon(Icons.note), 
+    label: 'Notes'
+  ),
+  NavigationDestination(
+    icon: Icon(Icons.checklist_outlined), 
+    selectedIcon: Icon(Icons.checklist), 
+    label: 'Tasks'
+  ),
+],
       ),
     );
   }
@@ -125,51 +125,59 @@ class HomeDashboard extends StatelessWidget {
               mainAxisSpacing: 16,
               childAspectRatio: 1.1,
             ),
-            itemCount: 4,
-            itemBuilder: (context, index) {
-              final tools = [
-                {
-                  'title': 'Unit Converter',
-                  'icon': Icons.swap_horiz,
-                  'color': Colors.deepPurple,
-                  'route': '/converter',
-                },
-                {
-                  'title': 'Currency Converter',
-                  'icon': Icons.currency_exchange,
-                  'color': Colors.green,
-                  'route': '/currency',
-                },
-                {
-                  'title': 'My Notes',
-                  'icon': Icons.note_alt,
-                  'color': Colors.orange,
-                  'route': '/notes',
-                },
-                {
-                  'title': 'BMI Calculator',
-                  'icon': Icons.monitor_weight,
-                  'color': Colors.blue,
-                  'route': '/bmi',
-                },
-              ];
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            final tools = [
+              {
+                'title': 'Unit Converter',
+                'icon': Icons.swap_horiz,
+                'color': Colors.deepPurple,
+                'route': '/converter',
+              },
+              {
+                'title': 'Currency Converter',
+                'icon': Icons.currency_exchange,
+                'color': Colors.green,
+                'route': '/currency',
+              },
+              {
+                'title': 'My Notes',
+                'icon': Icons.note_alt,
+                'color': Colors.orange,
+                'route': '/notes',
+              },
+              {
+                'title': 'Tasks & Checklist',
+                'icon': Icons.checklist,
+                'color': Colors.pink,
+                'route': '/tasks',
+              },
+              {
+                'title': 'BMI Calculator',
+                'icon': Icons.monitor_weight,
+                'color': Colors.blue,
+                'route': '/bmi',
+              },
+            ];
 
-              final tool = tools[index];
+            final tool = tools[index];
 
-              return GestureDetector(
-               onTap: () {
-  final route = tool['route'] as String?;
+            return GestureDetector(
+             onTap: () {
+final route = tool['route'] as String?;
   if (route == '/converter') {
     context.push('/converter');
   } else if (route == '/currency') {
     context.push('/currency');
   } else if (route == '/notes') {
     context.push('/notes');
+  } else if (route == '/tasks') {
+    context.push('/tasks');
   } else if (route == '/bmi') {
     context.push('/bmi');
   } else {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('${tool['title']} - Coming soon!')),
+      SnackBar(content: Text('${tool["title"]} coming soon')),
     );
   }
 },
